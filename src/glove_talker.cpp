@@ -32,6 +32,7 @@ int main(int argc, char **argv) {
     std::exit(EXIT_FAILURE);
   }
 
+
   while (talker->getStatus()) {
     if (talker->readAndPublish() != 0) {
       continue;  // there is no data available

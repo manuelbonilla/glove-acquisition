@@ -8,6 +8,7 @@ find_package(catkin REQUIRED
   std_msgs
   geometry_msgs
   message_generation
+  cmake_modules #need for eigen
 )
 
 add_message_files(
@@ -17,6 +18,9 @@ add_message_files(
     GloveIMUArray.msg
 )
 
+find_package(Eigen REQUIRED)
+include_directories(${Eigen_INCLUDE_DIRS})
+
 generate_messages(
   DEPENDENCIES
     std_msgs
@@ -25,6 +29,7 @@ generate_messages(
 
 include_directories(include
   ${catkin_INCLUDE_DIRS}
+  ${Boost_INCLUDE_DIR}
 )
 
 set(LIB_GLOVE glove_core)

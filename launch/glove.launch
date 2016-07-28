@@ -8,8 +8,9 @@
 
   <node pkg="glove_acquisition" type="glove_talker" name="glove_talker" output="screen" cwd="ROS_HOME">
     <param name="verbose_mode" type="bool" value="$(arg glove_pub_verbose_mode)" />
-    <param name="serial_port" type="str" value="/dev/ttyACM0" />
+    <param name="serial_port" type="str" value="/dev/ttyUSB0" />
     <param name="start_comm_char" type="str" value="A" />
+    <param name="num_imus" type="int" value="7" />
   </node>
 
   <node pkg="glove_acquisition" type="glove_listener" name="glove_listener" output="screen" cwd="ROS_HOME">

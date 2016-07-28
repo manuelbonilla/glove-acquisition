@@ -24,6 +24,15 @@
 #include <exception>
 #include <vector>
 #include <map>
+// eigen libraries
+#include <Eigen/Core>
+#include <Eigen/Geometry>
+// boost libraries
+#include <boost/chrono.hpp>
+#include <boost/asio.hpp>
+#include <boost/algorithm/string.hpp>
+#include <boost/lexical_cast.hpp>
+#include <boost/asio/serial_port.hpp> 
 // ROS libraries
 #include <ros/ros.h>
 #include <ros/time.h>
@@ -175,6 +184,13 @@ class GloveCore {
   std::string start_comm_char_;
   int serial_port_fd_;
   struct termios new_port_settings_;
+
+  // glove configuration variables [PSOC 3 - IMUboard]
+   boost::asio::serial_port* serialPort_;
+  boost::asio::io_service ioService_;
+  int sizeBuffer_;
+  uint8_t* dataBuffer_; 
+
 
   // glove reading variables
   std::vector<char> data_temp_;  // it could be filled in more acquisition cycles (if the serial stream is empty)
